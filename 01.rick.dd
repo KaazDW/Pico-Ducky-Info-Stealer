@@ -1,0 +1,6 @@
+GUI r
+DELAY 100
+STRING msedge.exe https://static.wikia.nocookie.net/meme/images/d/db/Rick-astley.png/revision/latest?cb=20200713010539
+ENTER
+DELAY 3000
+STRING f

