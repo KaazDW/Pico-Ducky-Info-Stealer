@@ -334,7 +334,7 @@ Register-ScheduledTask -TaskName "SystemUpdate" -Action $action -Trigger $trigge
 - **PowerShell Documentation** - [docs.microsoft.com](https://docs.microsoft.com/powershell/)
 - **Youtube Video** - [https://www.youtube.com/watch?v=e_f9p-_JWZw&t=106s&pp=ugMICgJmchABGAHKBRhyYXBiZXJyeSBwaSBwaWNvIGJhZCB1c2I%3D](https://www.youtube.com/watch?v=e_f9p-_JWZw&t=106s&pp=ugMICgJmchABGAHKBRhyYXBiZXJyeSBwaSBwaWNvIGJhZCB1c2I%3D)
 
-> Script "08.stealer_password_browser_template.ps1" made by https://github.com/simplyyCarlos
+> Script "07.stealer_password_browser_template.ps1" made by https://github.com/simplyyCarlos
 ---
 
 ## 🎓 Conclusion
